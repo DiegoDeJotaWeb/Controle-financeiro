@@ -205,8 +205,9 @@ $total = $row['total'];
 		  <div class="modal-dialog" role="document">
 			<div class="modal-content">
 			  <div class="modal-header">
+			  <h4 class="modal-title" >Altere lançamento</h4>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-				<h4 class="modal-title" id="exampleModalLabel">texto</h4>
+<!--				<h4 class="modal-title" id="exampleModalLabel">texto</h4>-->
 			  </div>
 			  <div class="modal-body">
 				<form method="get" action="./vendor/_alterar.php" enctype="multipart/form-data">
@@ -226,7 +227,7 @@ $total = $row['total'];
 					<label for="message-text" class="control-label">Data:</label>
 					<input  name="data" type="text" class="form-control" id="data" >
 				  </div>
-				<input name="id" type="text" class="form-control" id="id-lancamento" value="">
+				<input name="id" type="inner" class="form-control" id="id-lancamento" value="">
 				
 				<button type="button" class="btn btn-success" data-dismiss="modal">Cancelar</button>
 				<button type="submit" class="btn btn-danger">Alterar</button>
@@ -320,7 +321,7 @@ $total = $row['total'];
 		  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
 		  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
 		  var modal = $(this)
-		  modal.find('.modal-title').text('ID ' + recipient)
+//		  modal.find('.modal-title').text('ID ' + recipient)
 		  modal.find('#id-lancamento').val(recipient)
 		  modal.find('#recipient-titulo').val(recipienttitulo)
 		  modal.find('#categoria').val(recipientcategoria)

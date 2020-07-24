@@ -38,7 +38,7 @@ $valorLimpo =  $tirarVirgula . '.' . $ex2;
 //echo $TirarPonto;
 
 
-if($categoria == '0'){
+if($categoria == '0' || $categoria == 'Despesa'){
 $sqlA = "UPDATE lancamento SET tituloL = '{$titulo}', categoriaL = '{$categoria}',  valorL = -{$valorLimpo},  dataL = '$data' where idL = {$id};";
 }else{
 $sqlA = "UPDATE lancamento SET tituloL = '{$titulo}', categoriaL = '{$categoria}',  valorL = {$valorLimpo},  dataL = '$data' where idL = {$id};";
