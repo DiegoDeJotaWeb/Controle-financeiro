@@ -1,4 +1,5 @@
-<?php
+<!--https://www.apinfo.com/apinfo/inc/enviecv.cfm?codvaga=89317&pkey=YsvkrYZYksYwvhrjvjcSyzEHsWzqTsETqH-->
+          <?php
            include './vendor/_conecta.php';
 $con = PdoConexao::getInstancia();
 
@@ -6,7 +7,6 @@ $con = PdoConexao::getInstancia();
 
 $sql = "SELECT * FROM lancamento";
 $buscarLancamento = $con->query($sql);
-
 
 // entradas 
 $sqlE = "SELECT SUM(valorL) AS entrada 
@@ -59,7 +59,7 @@ $total = $row['total'];
                                     if(!$entrada){
                                        echo "R$ 0,00" ;
                                     }else{
-                                        echo $entrada;
+                                        echo number_format($entrada, 2, ',', '.');
                                     }
                                  ?>
                             </p>
@@ -79,7 +79,7 @@ $total = $row['total'];
                                     if(!$saida){
                                        echo "R$ 0,00" ;
                                     }else{
-                                        echo $saida;
+                                       echo number_format($saida, 2, ',', '.');
                                     }
                                  ?>
                             </p>
@@ -93,7 +93,7 @@ $total = $row['total'];
                         <div class="card-body">
                             <p class="card-title text-uppercase">Total <span class="float-right"><i class="fas fa-dollar-sign"></i></span></p>
 
-                            <p>R$ <span id="total"><?php echo $total?></span></p>
+                            <p>R$ <span id="total"><?php echo number_format($total, 2, ',', '.'); ?></span></p>
                         </div>
 
                     </div>
@@ -122,27 +122,24 @@ $total = $row['total'];
                         </thead>
 
                         <tbody>
-                            <?php
+
                             
+                                
+                            <?php
+                           
                             
 	                         while($row = $buscarLancamento->fetch(PDO::FETCH_ASSOC)) {
-                            
-                            ?>
-
-
-
-
-
-
-
+                        ?>
 
                             <tr>
                                 <td style="width:10%;">
                                     <?php echo $row['tituloL'];?>
                                 </td>
 
-                                <td id="cifrao">R$ <span class="valorLista"><?php echo $row['valorL'];?></span></td>
-                                <td class="categoria"><?php if($row['categoriaL'] == 0){echo "Despesa";}else{echo "Renda";}?></td>
+                                <td id="cifrao">R$ <span class="valorLista"><?php echo number_format($row['valorL'], 2, ',', '.');?></span></td>
+                                
+                                
+                                <td class="categoria"><?php if($row['categoriaL'] == "Despesa"){echo "Despesa";}if($row['categoriaL'] == "Renda"){echo "Renda";}?></td>
 
 
                                 <td>
@@ -187,7 +184,7 @@ $total = $row['total'];
                                                             </div>
                                                             <div class="col-md-6">
                                                                 <label for="">Valor do lançamento</label>
-                                                                <input type="text" class="form-control form-control-user" name="lancamentoValor" id="lancamentoValor" value="<?php echo $row['valorL']?>">
+                                                                <input type="text" class="form-control form-control-user" name="lancamentoValor" id="lancamentoValor" value="<?php echo $row['valorL']; ?>">
                                                             </div>
                                                         </div>
                                                         <a href="./vendor/_alterar.php?titulo=<?php echo $row['tituloL']?>" data-id="teste" class="btn btn-primary btn-user btn-block">Altera lançamento</a>
@@ -222,8 +219,8 @@ $total = $row['total'];
 					<input  name="categoria" type="text" class="form-control" id="categoria">
 				  </div>
 				  <div class="form-group">
-					<label for="message-text" class="control-label">Valor:</label>
-					<input   name="valor" type="text" class="form-control" id="valor">
+					<label for="message-text" class="control-label">Valor:</label>ssss
+					<input   name="valor" type="text" class="valorForm form-control" id="valor" >
 				  </div>
 				  <div class="form-group">
 					<label for="message-text" class="control-label">Data:</label>
@@ -244,7 +241,7 @@ $total = $row['total'];
                                     
                                     
                                     
-<button type="button" class="btn btn-xs btn-warning" data-toggle="modal" data-target="#exampleModal" data-whatever="<?php echo $row['idL']; ?>" data-whatevertitulo="<?php echo $row['tituloL'];  ?>" data-whatevercategoria="<?php echo $row['categoriaL'];  ?>" data-whatevervalor="<?php echo $row['valorL'];  ?>" data-whateverdata="<?php echo $row['dataL'];  ?>">Editar</button>
+<button type="button" id="editarBtn" class="btn btn-xs btn-warning text-white" data-toggle="modal" data-target="#exampleModal" data-whatever="<?php echo $row['idL']; ?>" data-whatevertitulo="<?php echo $row['tituloL'];  ?>" data-whatevercategoria="<?php echo $row['categoriaL'];  ?>" data-whatevervalor="<?php echo $row['valorL'];  ?>" data-whateverdata="<?php echo $row['dataL'];  ?>">Editar</button>
                                     |
 <a href="./vendor/_deletar.php?idLancamento=<?php echo $row['idL']?>" class="btn btn-danger text-white" data-confirm="del">Deletar</a>
 
@@ -327,12 +324,13 @@ $total = $row['total'];
 		  modal.find('#id-lancamento').val(recipient)
 		  modal.find('#recipient-titulo').val(recipienttitulo)
 		  modal.find('#categoria').val(recipientcategoria)
-		  modal.find('#valor').val(recipientvalor)
+		  modal.find('#valor').val(recipientvalor).mask('#.##0,00', { reverse: true })
 		  modal.find('#data').val(recipientdata)
 		  
 		})
 	</script>
-
+    
+       
     <footer class="text-center footer">
 
         <div class="menu py-5">

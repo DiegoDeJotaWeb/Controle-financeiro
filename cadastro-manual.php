@@ -30,26 +30,26 @@
               </div>
               <hr class="mb-4">
               <div class="row">
+              
               <div class="col-md-6 mb-3">
-                <label for="lastName"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Valor do lançamento</font></font></label>
-                <input type="text" class="form-control" id="valorLancamento" name="valorLancamento" placeholder="" value="" required="">
-                <div class="invalid-feedback">
-                  Valid last name is required.
-                </div>
-              </div>
-          
-                 <div class="col-md-6 mb-3">
                 <label for="country"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Categoria</font></font></label>
                 <select class="custom-select d-block w-100" id="country" required="" name="categoriaLancamento">
                   <option value=""><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Escolher...</font></font></option>
-                  <option value="1"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Renda</font></font></option>
-                  <option value="0"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Despesa </font></font></option>
+                  <option value="Renda"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Renda</font></font></option>
+                  <option value="Despesa"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Despesa </font></font></option>
                 </select>
                 <div class="invalid-feedback">
                   Please select a valid country.
                 </div>
               </div>
-             
+              
+              <div class="col-md-6 mb-3">
+                <label for="lastName"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Valor do lançamento</font></font></label>
+                <input type="text" class="dinheiro form-control" id="valorLancamento" name="valorLancamento" placeholder="" value="" required="" >
+                <div class="invalid-feedback">
+                  Valid last name is required.
+                </div>
+              </div>               
             </div>
 
          

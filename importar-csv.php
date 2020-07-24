@@ -18,7 +18,7 @@
                 <h1 class="titulo-pag col-md-12">Cadastro manual de um lançamento</h1>
 
                 <div class="col-md-12 card py-4 px-4">
-                    <form class="needs-validation" novalidate="">
+                    <form class="needs-validation" novalidate="" action="vendor/_upload.php" method="post" enctype="multipart/form-data">
                         <div class="row">
                             <div class="col-md-12 mb-3">
                                 <label for="firstName">
@@ -26,18 +26,12 @@
                                         <font style="vertical-align: inherit;">Fala upload de um arquivo csv</font>
                                     </font>
                                 </label>
-                                <input type="file" class="form-control" id="firstName" placeholder="" value="" required="">
+                                <input type="file" class="form-control" id="firstName" placeholder="" value="" required="" name="arquivo">
                                 <div class="invalid-feedback">
                                     Valid first name is required.
                                 </div>
                             </div>
-
                         </div>
-
-
-
-
-
                         <input class="btn btn-primary btn-lg btn-block" type="submit" value="Cadastrar">
                     </form>
                 </div>
